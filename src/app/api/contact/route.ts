@@ -1,6 +1,5 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-// @ts-ignore - types may not resolve in some turbopack contexts
 import nodemailer from "nodemailer";
 import { z } from "zod";
 
@@ -55,16 +54,20 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ ok: true, id: mailResult.messageId });
-  } catch (err: any) {
-    if (err?.issues) {
+  } catch (err: unknown) {
+    // Handle Zod validation errors
+    if (
+      err &&
+      typeof err === "object" &&
+      "issues" in err &&
+      Array.isArray((err as { issues?: unknown }).issues)
+    ) {
       return NextResponse.json(
-        { error: "Validation failed", details: err.issues },
+        { error: "Validation failed", details: (err as any).issues },
         { status: 400 }
       );
     }
-    return NextResponse.json(
-      { error: err.message || "Unexpected error" },
-      { status: 500 }
-    );
+    const message = err instanceof Error ? err.message : "Unexpected error";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

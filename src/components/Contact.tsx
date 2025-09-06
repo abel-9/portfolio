@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { z } from "zod";
 import { motion } from "framer-motion";
 
@@ -30,11 +30,10 @@ export default function ContactForm({
   const [errors, setErrors] = useState<
     Partial<Record<keyof ContactValues, string>>
   >({});
-  //   const [status, setStatus] = useState<
-  //     "idle" | "submitting" | "success" | "error"
-  //   >("idle");
-  const [serverMessage, _] = useState<string>("");
-  //   const [isPending, startTransition] = useTransition();
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [serverMessage, setServerMessage] = useState<string>("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -44,41 +43,61 @@ export default function ContactForm({
     setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
-  const validate = () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("submitting");
+    setServerMessage("");
+    // Client validation first
     const parsed = contactSchema.safeParse(values);
     if (!parsed.success) {
       const fieldErrors: Partial<Record<keyof ContactValues, string>> = {};
-      parsed.error.issues.forEach((issue: any) => {
-        const p = issue.path[0] as keyof ContactValues;
-        fieldErrors[p] = issue.message;
+      parsed.error.issues.forEach((issue) => {
+        const path = issue.path[0];
+        if (path && typeof path === "string" && path in values) {
+          fieldErrors[path as keyof ContactValues] = issue.message;
+        }
       });
       setErrors(fieldErrors);
-      return false;
+      setStatus("error");
+      setServerMessage("Please fix the highlighted fields.");
+      return;
     }
-    return true;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    // e.preventDefault();
-    // if (!validate()) return;
-    // setStatus("submitting");
-    // setServerMessage("");
-    // try {
-    //   const res = await fetch("/api/contact", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(values),
-    //   });
-    //   const data = await res.json();
-    //   if (!res.ok) throw new Error(data.error || "Failed to send");
-    //   setStatus("success");
-    //   setServerMessage("Message sent successfully.");
-    //   setValues(initialValues);
-    // } catch (err: any) {
-    //   setStatus("error");
-    //   setServerMessage(err.message || "Something went wrong");
-    // }
-    console.log("submit", values);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      const data: {
+        ok?: boolean;
+        id?: string;
+        error?: string;
+        details?: unknown;
+      } = await res.json();
+      if (!res.ok || !data.ok) {
+        setStatus("error");
+        if (Array.isArray((data as any).details)) {
+          // Map backend validation issues if provided
+          const backendErrors: Partial<Record<keyof ContactValues, string>> =
+            {};
+          (data as any).details.forEach((d: any) => {
+            if (d.path && d.path[0])
+              backendErrors[d.path[0] as keyof ContactValues] = d.message;
+          });
+          setErrors(backendErrors);
+        }
+        setServerMessage(data.error || "Failed to send. Try again later.");
+        return;
+      }
+      setStatus("success");
+      setServerMessage("Message sent successfully!");
+      setValues(initialValues);
+    } catch (error) {
+      setStatus("error");
+      setServerMessage(
+        error instanceof Error ? error.message : "Unexpected error"
+      );
+    }
   };
 
   return (
@@ -171,14 +190,30 @@ export default function ContactForm({
   );
 }
 
-interface FieldProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "name"> {
+interface FieldPropsBase {
   label: string;
   name: keyof ContactValues;
   error?: string;
   as?: "textarea";
   rows?: number;
 }
+
+type InputProps = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "name" | "value" | "onChange"
+> & {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+type TextAreaProps = Omit<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  "name" | "value" | "onChange"
+> & {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+};
+
+type FieldProps = FieldPropsBase & (InputProps | TextAreaProps);
 
 function Field({ label, name, error, as, rows, ...rest }: FieldProps) {
   const common = (
@@ -195,14 +230,14 @@ function Field({ label, name, error, as, rows, ...rest }: FieldProps) {
           name={name as string}
           rows={rows}
           className="w-full resize-y rounded-[var(--radius-sm)] border border-[var(--color-border)]/60 bg-[var(--color-background)]/60 px-4 py-3 text-sm text-[var(--color-foreground)] shadow-sm outline-none focus:border-[var(--color-accent)]/70 focus:ring-2 focus:ring-[var(--color-accent)]/40 transition placeholder:text-[var(--color-muted)]/60"
-          {...(rest as any)}
+          {...(rest as TextAreaProps)}
         />
       ) : (
         <input
           id={name as string}
           name={name as string}
           className="w-full rounded-[var(--radius-sm)] border border-[var(--color-border)]/60 bg-[var(--color-background)]/60 px-4 py-3 text-sm text-[var(--color-foreground)] shadow-sm outline-none focus:border-[var(--color-accent)]/70 focus:ring-2 focus:ring-[var(--color-accent)]/40 transition placeholder:text-[var(--color-muted)]/60"
-          {...rest}
+          {...(rest as InputProps)}
         />
       )}
       {error && (
