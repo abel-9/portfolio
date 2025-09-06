@@ -76,13 +76,24 @@ export default function ContactForm({
       } = await res.json();
       if (!res.ok || !data.ok) {
         setStatus("error");
-        if (Array.isArray((data as any).details)) {
-          // Map backend validation issues if provided
+        type BackendIssue = { path: (keyof ContactValues)[]; message: string };
+        const details = (data as { details?: unknown }).details;
+        if (Array.isArray(details)) {
           const backendErrors: Partial<Record<keyof ContactValues, string>> =
             {};
-          (data as any).details.forEach((d: any) => {
-            if (d.path && d.path[0])
-              backendErrors[d.path[0] as keyof ContactValues] = d.message;
+          (details as unknown[]).forEach((d) => {
+            if (
+              d &&
+              typeof d === "object" &&
+              "path" in d &&
+              Array.isArray((d as { path: unknown }).path) &&
+              "message" in d &&
+              typeof (d as { message: unknown }).message === "string"
+            ) {
+              const issue = d as BackendIssue;
+              const field = issue.path[0];
+              if (field) backendErrors[field] = issue.message;
+            }
           });
           setErrors(backendErrors);
         }

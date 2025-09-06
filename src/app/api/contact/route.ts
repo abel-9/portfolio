@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { z } from "zod";
+import { z, ZodError, ZodIssue } from "zod";
 
 const schema = z.object({
   name: z.string().min(2),
@@ -56,14 +56,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, id: mailResult.messageId });
   } catch (err: unknown) {
     // Handle Zod validation errors
-    if (
-      err &&
-      typeof err === "object" &&
-      "issues" in err &&
-      Array.isArray((err as { issues?: unknown }).issues)
-    ) {
+    if (err instanceof ZodError) {
+      const issues: ZodIssue[] = err.issues;
       return NextResponse.json(
-        { error: "Validation failed", details: (err as any).issues },
+        { error: "Validation failed", details: issues },
         { status: 400 }
       );
     }
