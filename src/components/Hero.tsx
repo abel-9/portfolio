@@ -11,9 +11,9 @@ export const heroContent = {
   subheading:
     "I build performant, accessible, design-driven web experiences with a focus on DX, scalability, and delightful micro‑interactions.",
   ctaPrimary: "Get In Touch",
-  ctaPrimaryHref: "/contact",
+  ctaPrimaryHref: "/#contact",
   ctaSecondary: "Download CV",
-  ctaSecondaryHref: "/cv.pdf",
+  ctaSecondaryHref: "/Cv.pdf",
 };
 
 // Re-usable spring fade/slide variants
@@ -144,6 +144,7 @@ export default function Hero() {
             <span className="pointer-events-none absolute inset-0 rounded-[var(--radius)] ring-1 ring-inset ring-white/10" />
           </a>
           <a
+            download="Abel_CV.pdf"
             href={heroContent.ctaSecondaryHref}
             className="inline-flex items-center gap-2 rounded-[var(--radius)] border border-[var(--color-border)]/70 bg-[var(--color-background-alt)]/60 px-7 py-3 text-sm font-semibold text-[var(--color-foreground)] shadow-sm hover:border-[var(--color-accent)]/50 hover:text-[var(--color-accent)] transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/60"
           >
