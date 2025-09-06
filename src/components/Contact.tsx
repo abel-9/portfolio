@@ -30,11 +30,11 @@ export default function ContactForm({
   const [errors, setErrors] = useState<
     Partial<Record<keyof ContactValues, string>>
   >({});
-  const [status, setStatus] = useState<
-    "idle" | "submitting" | "success" | "error"
-  >("idle");
-  const [serverMessage, setServerMessage] = useState<string>("");
-  const [isPending, startTransition] = useTransition();
+  //   const [status, setStatus] = useState<
+  //     "idle" | "submitting" | "success" | "error"
+  //   >("idle");
+  const [serverMessage, _] = useState<string>("");
+  //   const [isPending, startTransition] = useTransition();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
