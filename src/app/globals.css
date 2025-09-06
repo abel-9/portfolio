@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/*
+  Global design tokens (base - light) 
+  You can override these by setting data-theme="dark" or data-theme="brand" on <html> or <body>.
+*/
+:root,
+[data-theme="light"] {
+  --background: #ffffff;
+  --background-alt: #f5f7fa;
+  --foreground: #171717;
+  --muted: #5d5d5d;
+  --border: #e2e8f0;
+  --accent: #6366f1; /* indigo */
+  --accent-foreground: #ffffff;
+  --danger: #dc2626;
+  --warning: #f59e0b;
+  --success: #16a34a;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --shadow-color: 220 3% 15%;
+}
+
+/* System dark preference (will be overridden by explicit data-theme if present) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --background: #0a0a0a;
+    --background-alt: #111418;
+    --foreground: #ededed;
+    --muted: #9ca3af;
+    --border: #262b33;
+    --accent: #818cf8;
+    --accent-foreground: #ffffff;
+    --shadow-color: 220 40% 2%;
+  }
+}
+
+/* Explicit dark theme */
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --background-alt: #111418;
+  --foreground: #ededed;
+  --muted: #9ca3af;
+  --border: #262b33;
+  --accent: #6366f1;
+  --accent-foreground: #ffffff;
+  --danger: #f87171;
+  --warning: #fbbf24;
+  --success: #22c55e;
+  --shadow-color: 220 40% 2%;
+}
+
+/* Custom brand theme (example) */
+[data-theme="brand"] {
+  --background: #070b11;
+  --background-alt: #0d1724;
+  --foreground: #f1f5f9;
+  --muted: #94a3b8;
+  --border: #1e293b;
+  --accent: #0ea5e9; /* sky */
+  --accent-foreground: #031522;
+  --danger: #f87171;
+  --warning: #fbbf24;
+  --success: #06d6a0;
+  --shadow-color: 210 70% 3%;
+}
+
+/* Tailwind theme tokens mapping (v4 @theme inline) */
+@theme inline {
+  --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+  --radius-sm: var(--radius-sm);
+  --radius: var(--radius);
+  --radius-lg: var(--radius-lg);
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.15);
+  --shadow: 0 4px 10px -2px hsl(var(--shadow-color) / 0.25),
+    0 2px 4px hsl(var(--shadow-color) / 0.2);
+  --shadow-lg: 0 8px 28px -6px hsl(var(--shadow-color) / 0.35),
+    0 4px 12px hsl(var(--shadow-color) / 0.25);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  accent-color: var(--accent);
+}
+
+/* Utility helpers (can be used directly if needed) */
+.theme-border {
+  border: 1px solid var(--border);
+}
+.theme-surface {
+  background: var(--background-alt);
+}
+.theme-card {
+  background: var(--background-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Smooth theme transitions (optional) */
+html.theme-transition *,
+html.theme-transition *:before,
+html.theme-transition *:after {
+  transition: background-color 0.4s ease, color 0.4s ease,
+    border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Example accent gradient utility */
+.bg-accent-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 70%, #000) 100%
+  );
+}
+
+/* Scrollbar theming (WebKit) */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--background-alt);
+}
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent) 60%, #000);
+  border-radius: 20px;
+  border: 2px solid var(--background-alt);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Data attribute fallback for prefers-color-scheme users who opt out */
+[data-force-light] {
+  color-scheme: light;
+}
+[data-force-dark] {
+  color-scheme: dark;
+}
+
+/* Documentation (remove if not needed):
+   Switch theme in React:
+     document.documentElement.setAttribute('data-theme', 'brand');
+   Add a small fade transition:
+     document.documentElement.classList.add('theme-transition');
+     setTimeout(()=>document.documentElement.classList.remove('theme-transition'), 500);
+*/
