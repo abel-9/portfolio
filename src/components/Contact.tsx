@@ -59,25 +59,26 @@ export default function ContactForm({
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
-    setStatus("submitting");
-    setServerMessage("");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to send");
-      setStatus("success");
-      setServerMessage("Message sent successfully.");
-      setValues(initialValues);
-    } catch (err: any) {
-      setStatus("error");
-      setServerMessage(err.message || "Something went wrong");
-    }
+    // e.preventDefault();
+    // if (!validate()) return;
+    // setStatus("submitting");
+    // setServerMessage("");
+    // try {
+    //   const res = await fetch("/api/contact", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(values),
+    //   });
+    //   const data = await res.json();
+    //   if (!res.ok) throw new Error(data.error || "Failed to send");
+    //   setStatus("success");
+    //   setServerMessage("Message sent successfully.");
+    //   setValues(initialValues);
+    // } catch (err: any) {
+    //   setStatus("error");
+    //   setServerMessage(err.message || "Something went wrong");
+    // }
+    console.log("submit", values);
   };
 
   return (
