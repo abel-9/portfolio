@@ -75,7 +75,7 @@ export default function Skill() {
                           pointer={{ elastic: true }}
                         />
                       </div>
-                      <h3 className="text-sm md:text-lg font-semibold text-center text-accent">
+                      <h3 className="text-sm md:text-md font-semibold text-center text-accent p-2">
                         {skill.name}
                       </h3>
                     </div>
