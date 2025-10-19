@@ -1,11 +1,18 @@
 "use client";
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 export default function ToggleTheme() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const controller = useAnimation();
 
   useEffect(() => {
+    controller.start({
+      rotate: isDarkMode ? 360 : 0,
+      transition: { duration: 0.7 },
+    });
+
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
     } else {
@@ -14,7 +21,8 @@ export default function ToggleTheme() {
   }, [isDarkMode]);
 
   return (
-    <div
+    <motion.div
+      animate={controller}
       className="absolute bottom-2 right-2 rounded-full p-1 shadow-md bg-bg-light"
       onClick={() => setIsDarkMode(!isDarkMode)}
     >
@@ -23,6 +31,6 @@ export default function ToggleTheme() {
       ) : (
         <Sun className="text-text-muted" />
       )}
-    </div>
+    </motion.div>
   );
 }

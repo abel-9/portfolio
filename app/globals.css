@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 :root {
@@ -21,9 +22,9 @@ body {
   --highlight: hsl(0 0% 100%);
   --border: hsl(0 0% 30%);
 
-  --sadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
-  --sadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --sadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --sadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --sadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --sadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .dark {
@@ -43,9 +44,12 @@ body {
   --highlight: hsl(0 0% 60%);
   --border: hsl(0 0% 30%);
 
-  --shadow-sm: 0 1px 2px rgba(255, 255, 255, 0.5);
-  --shadow-md: 0 4px 6px rgba(255, 255, 255, 0.5);
-  --shadow-lg: 0 10px 15px rgba(255, 255, 255, 0.5);
+  --shadow-sm: 0 1px 3px rgba(255, 255, 255, 0.05),
+    0 1px 2px rgba(255, 255, 255, 0.03);
+  --shadow-md: 0 4px 6px rgba(255, 255, 255, 0.1),
+    0 2px 4px rgba(255, 255, 255, 0.06);
+  --shadow-lg: 0 10px 15px rgba(255, 255, 255, 0.2),
+    0 4px 6px rgba(255, 255, 255, 0.1);
 }
 
 @theme {
@@ -59,13 +63,27 @@ body {
   --color-primary: var(--primary);
   --color-accent: var(--accent);
 
-  --color-gradiant: var(--gradiant);
-  --color-gradiant-hover: var(--gradiant-hover);
-
   --color-highlight: var(--highlight);
   --color-border: var(--border);
 
-  --shadow-sm: var(--sadow-sm);
-  --shadow-md: var(--sadow-md);
-  --shadow-lg: var(--sadow-lg);
+  --shadow-shadow-sm: var(--sadow-sm);
+  --shadow-shadow-md: var(--sadow-md);
+  --shadow-shadow-lg: var(--sadow-lg);
+}
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.gradiant {
+  background: var(--gradiant);
+}
+
+.gradiant-hover {
+  background: var(--gradiant-hover);
 }
