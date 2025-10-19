@@ -5,7 +5,7 @@ export default function Contact() {
         Contact Me
       </h1>
       <p className="text-md text-center text-text-muted max-w-2xl mx-auto">
-        I'm always open to discussing new projects, creative ideas, or
+        I&apos;m always open to discussing new projects, creative ideas, or
         opportunities to be part of your visions. Feel free to reach out to me
         via email or through my social media channels.
       </p>

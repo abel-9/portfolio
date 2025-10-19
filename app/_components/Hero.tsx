@@ -1,7 +1,6 @@
 import { ArrowRight, Computer } from "lucide-react";
 import Image from "next/image";
 import Button from "./shared/button";
-import Bounce from "./animations/bounce";
 
 export default function Hero() {
   return (
@@ -11,16 +10,16 @@ export default function Hero() {
     >
       <div className="flex-1 flex flex-col justify-center p-4 md:p-16 h-full">
         <h1 className="text-text text-2xl md:text-4xl font-bold mb-4">
-          Hey! It's{" "}
+          Hey! It&apos;s{" "}
           <span className="text-accent text-3xl md:text-5xl">Abel Girmay</span>
         </h1>
         <h3 className="text-text text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">
           <Computer /> <span>Computer Science and Engineering</span>
         </h3>
         <p className="text-text-muted">
-          I'm a software engineer specializing in building (and occasionally
-          designing) exceptional digital experiences. Currently, I'm focused on
-          building accessible, human-centered products.
+          I&apos;m a software engineer specializing in building (and
+          occasionally designing) exceptional digital experiences. Currently,
+          I&apos;m focused on building accessible, human-centered products.
         </p>
         <div className="flex gap-2.5 mt-10 md:items-center">
           <Button

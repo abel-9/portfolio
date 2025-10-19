@@ -18,7 +18,7 @@ export default function ToggleTheme() {
     } else {
       document.documentElement.classList.remove("dark");
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, controller]);
 
   return (
     <motion.div
