@@ -10,57 +10,134 @@ interface ProjectProps {
   images: string[];
 }
 
+const projects: ProjectProps[] = [
+  {
+    name: "Amil: Client Management System",
+    description:
+      "A comprehensive client management system designed to streamline client interactions, track project progress and financial situation and enhance overall productivity for businesses.",
+    technologies: [
+      "ElectronJS",
+      "TypeScript",
+      "ReactJS",
+      "TailwindCSS",
+      "SQLite",
+    ],
+    images: ["/amil-1.png", "/amil-2.png"],
+  },
+  {
+    name: "kelem",
+    description:
+      "an app that lets kids enjoy learning there culture and history in an interactive way through coloring various cultural and historical figures.",
+    technologies: ["React Native", "Expo", "TypeScript"],
+    images: ["/project_placeholder.png"],
+  },
+  {
+    name: "Portfolio Website",
+    description:
+      "A personal portfolio website to showcase my projects and skills.",
+    technologies: ["NextJS", "TypeScript", "TailwindCSS", "Framer Motion"],
+    images: ["/portfolio.png"],
+  },
+  {
+    name: "story",
+    description:
+      "An app that lets users create and share short stories with friends and followers.",
+    technologies: [
+      "NestJS",
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "RESTapi",
+      "prisma",
+      "PostgreSQL",
+    ],
+    images: ["/project_placeholder.png"],
+  },
+  {
+    name: "NEXTstep",
+    description:
+      "an AI web app that lets students find scholarships matching their CV",
+    technologies: [
+      "FastAPI",
+      "ReactJS",
+      "TypeScript",
+      "TailwindCSS",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "TensorFlow",
+    ],
+    images: ["/project_placeholder.png"],
+  },
+  {
+    name: "RARA media",
+    description: "a news media website covering local and international news.",
+    technologies: ["Frontend", "vueJS", "JavaScript", "CSS"],
+    images: ["/project_placeholder.png"],
+  },
+];
+
 export default function Projects() {
-  const projects: ProjectProps[] = [
-    {
-      name: "Amil: Client Management System",
-      description:
-        "A comprehensive client management system designed to streamline client interactions, track project progress and financial situation and enhance overall productivity for businesses.",
-      technologies: ["Next.js", "TypeScript", "Prisma"],
-      images: ["/amil-1.png", "/amil-2.png"],
-    },
-  ];
+  const [currentSubjectIndex, setCurrentSubjectIndex] = useState<number>(0);
+
   return (
     <section className="flex flex-col items-center p-4">
       <h2 className="text-3xl font-bold text-center text-primary">Projects</h2>
       <p className="text-md text-center text-text-muted max-w-2xl mt-2">
         Here are some of the projects I&apos;ve worked on recently.
       </p>
-      <div className="flex flex-wrap gap-4 p-4 items-center justify-center">
-        {projects.map((project) => (
-          <div
-            key={project.name}
-            className="w-1/4 rounded-b-xl overflow-clip shadow-shadow-sm"
-          >
-            <Project project={project} />
-          </div>
+      <div className="grid md:grid-cols-4 grid-cols-1 gap-6 w-full mt-8 justify-center">
+        {projects.map((project, index) => (
+          <Project
+            project={project}
+            key={index}
+            index={index}
+            setCurrentSubjectIndex={setCurrentSubjectIndex}
+            currentIndex={currentSubjectIndex}
+          />
         ))}
       </div>
     </section>
   );
 }
 
-function Project({ project }: { project: ProjectProps }) {
+function Project({
+  project,
+  index,
+  setCurrentSubjectIndex,
+  currentIndex,
+}: {
+  project: ProjectProps;
+  index: number;
+  setCurrentSubjectIndex: (index: number) => void;
+  currentIndex: number;
+}) {
   const [onHover, setOnHover] = useState(false);
   const controller = useAnimation();
 
   useEffect(() => {
-    if (onHover) {
+    if (onHover || currentIndex === index) {
       controller.start({
         height: "auto",
       });
     } else {
       controller.start({ height: 0, padding: 0 });
     }
-  }, [onHover, controller]);
+  }, [onHover, controller, currentIndex, index]);
 
   return (
     <motion.div
       onHoverStart={() => setOnHover(true)}
       onHoverEnd={() => setOnHover(false)}
-      className="relative w-full bg-bg"
+      initial={{ scale: 1 }}
+      animate={{ scale: currentIndex === index ? 1.03 : 1 }}
+      onTap={() => {
+        setCurrentSubjectIndex(index === currentIndex ? -1 : index);
+      }}
+      className="relative bg-bg rounded-b-xl shadow-shadow-sm overflow-clip cursor-pointer"
     >
-      <ImageCarousel images={["/amil-1.png", "/amil-2.png"]} />
+      <div className="w-full aspect-video">
+        <ImageCarousel images={project.images} />
+      </div>
       <div className="p-4">
         <h3 className="text-text font-bold text-md">{project.name}</h3>
         <div className="w-full flex flex-wrap gap-2 flex-row mt-4">

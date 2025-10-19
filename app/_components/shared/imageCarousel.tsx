@@ -40,7 +40,7 @@ export default function ImageCarousel({
 
   return (
     <div className="relative w-full">
-      <div className="w-full aspect-video bg-black flex overflow-hidden">
+      <div className="w-full aspect-video flex overflow-hidden">
         {images.map((src, index) => (
           <motion.div
             animate={controller}
@@ -50,9 +50,9 @@ export default function ImageCarousel({
             <Image
               src={src}
               alt={`Image ${index + 1}`}
-              width={1600}
-              height={900}
-              className="object-cover overflow-clip aspect-video object-top"
+              width={800}
+              height={450}
+              className="w-full aspect-video object-cover overflow-clip object-top"
             />
           </motion.div>
         ))}
