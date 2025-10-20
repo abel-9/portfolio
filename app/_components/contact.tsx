@@ -5,8 +5,8 @@ import Button from "./shared/button";
 export default function Contact() {
   const form = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log("data");
+  const onSubmit = (data: unknown) => {
+    console.log("data", data);
   };
 
   return (
