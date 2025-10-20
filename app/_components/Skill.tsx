@@ -9,25 +9,29 @@ export default function Skill() {
         { name: "JavaScript", level: 90 },
         { name: "TypeScript", level: 85 },
         { name: "Python", level: 80 },
-        { name: "Java", level: 70 },
+        { name: "PHP", level: 80 },
+        { name: "C++", level: 70 },
       ],
     },
     {
       type: "frameworks",
       skills: [
-        { name: "React", level: 90 },
+        { name: "Laravel", level: 90 },
+        { name: "Nest.js", level: 85 },
+        { name: "FastAPI", level: 80 },
+        { name: "React.js", level: 90 },
+        { name: "Expo", level: 90 },
         { name: "Next.js", level: 85 },
-        { name: "Node.js", level: 80 },
-        { name: "Django", level: 70 },
+        { name: "Vue.js", level: 80 },
+        { name: "Flutter", level: 80 },
       ],
     },
     {
       type: "databases",
       skills: [
-        { name: "PostgreSQL", level: 80 },
-        { name: "MongoDB", level: 75 },
-        { name: "MySQL", level: 70 },
-        { name: "SQLite", level: 65 },
+        { name: "PostgreSQL", level: 90 },
+        { name: "SQLite", level: 85 },
+        { name: "MongoDB", level: 80 },
       ],
     },
   ];
@@ -62,14 +66,6 @@ export default function Skill() {
                               formatTextValue(value) {
                                 return `${Math.round(value)}%`;
                               },
-                            },
-                            tickLabels: {
-                              ticks: [
-                                { value: 20 },
-                                { value: 50 },
-                                { value: 80 },
-                                { value: 100 },
-                              ],
                             },
                           }}
                           pointer={{ elastic: true }}
