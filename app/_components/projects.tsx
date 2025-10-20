@@ -41,7 +41,7 @@ const projects: ProjectProps[] = [
   {
     name: "story",
     description:
-      "An app that lets users create and share short stories with friends and followers.",
+      "A social app that lets users create and share short stories with friends and followers.",
     technologies: [
       "NestJS",
       "React Native",
@@ -77,10 +77,10 @@ const projects: ProjectProps[] = [
 ];
 
 export default function Projects() {
-  const [currentSubjectIndex, setCurrentSubjectIndex] = useState<number>(0);
+  const [currentSubjectIndex, setCurrentSubjectIndex] = useState<number>(-1);
 
   return (
-    <section className="flex flex-col items-center p-4">
+    <section id="projects" className="flex flex-col items-center p-4">
       <h2 className="text-3xl font-bold text-center text-primary">Projects</h2>
       <p className="text-md text-center text-text-muted max-w-2xl mt-2">
         Here are some of the projects I&apos;ve worked on recently.

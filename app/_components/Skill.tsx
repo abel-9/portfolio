@@ -36,7 +36,7 @@ export default function Skill() {
     },
   ];
   return (
-    <section className="flex flex-col p-6 gap-6">
+    <section id="skills" className="flex flex-col p-6 gap-6">
       <h1 className="text-4xl text-primary font-bold text-center">My Skills</h1>
       {skills.map((skillCategory) => {
         return (

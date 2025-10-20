@@ -21,7 +21,7 @@ const About = () => {
   ];
 
   return (
-    <section className="p-2 bg-primary/80">
+    <section id="about" className="p-2 bg-primary/80">
       <div className="flex flex-col items-center">
         <h1 className="text-text text-4xl font-bold">About Me</h1>
         <p className="max-w-3xl text-center text-white">

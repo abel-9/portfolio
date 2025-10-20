@@ -10,10 +10,9 @@ import Sparetor from "./_components/sparetor";
 export default function Home() {
   return (
     <div className="relative flex flex-col bg-bg-dark">
-      <div className="sticky top-0 z-20">
-        <Navbar />
-      </div>
-      <div className="h-[92dvh] flex flex-col">
+      <Navbar />
+
+      <div className="h-[92dvh] mt-[8dvh] flex flex-col">
         <div className="flex-1">
           <Hero />
         </div>

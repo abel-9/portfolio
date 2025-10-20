@@ -1,7 +1,7 @@
 "use client";
-import { Box, Menu } from "lucide-react";
+import { Box, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
 
 export default function Navbar() {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -15,7 +15,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-bg p-1 shadow-sm flex flex-col gap-2">
+    <nav className="fixed w-full top-0 z-20 bg-bg p-1 shadow-sm flex flex-col gap-2">
       <div className="flex justify-between items-center mx-auto w-[90%]">
         <div className="flex items-center gap-2">
           <motion.span
@@ -58,25 +58,36 @@ export default function Navbar() {
           }}
           className="flex md:hidden"
         >
-          <Menu className="text-accent h-6 w-6" />
+          {isCollapsed ? (
+            <Menu className="text-accent h-6 w-6" />
+          ) : (
+            <X className="text-accent h-6 w-6" />
+          )}
         </div>
       </div>
-      <div className="bg-bg-dark/50 rounded-xl">
-        {!isCollapsed && (
-          <div className="flex flex-col gap-2 md:hidden mx-auto w-[90%]">
-            {navItems.map((item) => (
-              <a
-                onClick={() => setIsCollapsed(true)}
-                key={item.href}
-                href={item.href}
-                className="relative font-semibold text-accent text-sm hover:bg-bg-light hover:shadow-xs p-2 rounded-xl"
-              >
-                <div className="hidden absolute bottom-0 left-0 right-0 h-0.5 bg-accent" />
-                {item.label}
-              </a>
-            ))}
-          </div>
-        )}
+      <div className=" bg-bg-dark/50 rounded-xl">
+        <AnimatePresence>
+          {!isCollapsed && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="flex flex-col gap-2 md:hidden mx-auto w-[90%]"
+            >
+              {navItems.map((item) => (
+                <a
+                  onClick={() => setIsCollapsed(true)}
+                  key={item.href}
+                  href={item.href}
+                  className="relative font-semibold text-accent text-sm hover:bg-bg-light hover:shadow-xs p-2 rounded-xl"
+                >
+                  <div className="hidden absolute bottom-0 left-0 right-0 h-0.5 bg-accent" />
+                  {item.label}
+                </a>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

@@ -1,6 +1,16 @@
+"use client";
+import { useForm } from "react-hook-form";
+import Button from "./shared/button";
+
 export default function Contact() {
+  const form = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log("data");
+  };
+
   return (
-    <section className="flex flex-col p-6 gap-6">
+    <section id="contact" className="flex flex-col p-6 gap-6">
       <div className="text-center">
         <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
           Let&apos;s Collaborate
@@ -11,10 +21,7 @@ export default function Contact() {
           channels.
         </p>
       </div>
-      <form
-        action="#"
-        className="flex flex-col justify-center w-full md:w-2xl self-center gap-4"
-      >
+      <form className="flex flex-col justify-center w-full md:w-2xl self-center gap-4">
         <div className="flex md:flex-row flex-col gap-2 w-full">
           <div className="flex-1 flex flex-col gap-1">
             <label
@@ -26,6 +33,7 @@ export default function Contact() {
             <input
               type="text"
               id="name"
+              {...form.register("name")}
               className="px-4 py-2 border border-border-dark rounded-md bg-bg-light text-text-muted focus:outline-none focus:ring-2 focus:ring-accent"
               placeholder="Your Name"
             />
@@ -40,6 +48,7 @@ export default function Contact() {
             <input
               type="email"
               id="email"
+              {...form.register("email")}
               className="px-4 py-2 border border-border-dark rounded-md bg-bg-light text-text-muted focus:outline-none focus:ring-2 focus:ring-accent"
               placeholder="Your Email"
             />
@@ -54,10 +63,19 @@ export default function Contact() {
           </label>
           <textarea
             id="message"
+            {...form.register("message")}
             className="px-4 py-2 min-h-[100px] max-h-[300px] resize-none hide-scrollbar w-full border border-border-dark rounded-md bg-bg-light text-text-muted focus:outline-none focus:ring-2 focus:ring-accent"
             placeholder="Your Message"
           />
         </div>
+        <Button
+          variant="primary"
+          size="md"
+          onClick={() => form.handleSubmit(onSubmit)}
+          className="self-end mt-2 w-fit"
+        >
+          Send Message
+        </Button>
       </form>
     </section>
   );
