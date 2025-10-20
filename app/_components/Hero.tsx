@@ -22,20 +22,24 @@ export default function Hero() {
           I&apos;m focused on building accessible, human-centered products.
         </p>
         <div className="flex gap-2.5 mt-10 md:items-center">
-          <Button
-            size="md"
-            variant="primary"
-            className="flex w-fit items-center gap-1"
-          >
-            Download CV
-          </Button>
-          <Button
-            size="md"
-            variant="outline"
-            className="flex w-fit items-center gap-1"
-          >
-            Get Started <ArrowRight />
-          </Button>
+          <a href="/Cv.pdf" target="_blank" rel="noopener noreferrer">
+            <Button
+              size="md"
+              variant="primary"
+              className="flex w-fit items-center gap-1"
+            >
+              View CV
+            </Button>
+          </a>
+          <a href="#projects">
+            <Button
+              size="md"
+              variant="outline"
+              className="flex w-fit items-center gap-1"
+            >
+              Get Started <ArrowRight />
+            </Button>
+          </a>
         </div>
       </div>
       <div className="relative h-[87dvh] w-full flex-1 rounded-xl bg-bg shadow-shadow-sm">

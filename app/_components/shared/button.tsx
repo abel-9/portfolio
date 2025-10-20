@@ -29,7 +29,7 @@ export default function Button({
     } bg-primary text-text hover:bg-primary/90 hover:text-text shadow-shadow-sm`,
     accent: `${
       rest.disabled ? "opacity-50 cursor-not-allowed" : ""
-    } bg-accent text-accent hover:bg-accent/90 hover:text-text shadow-shadow-sm`,
+    } bg-accent text-white hover:bg-accent/90 hover:text-text shadow-shadow-sm`,
     outline: `${
       rest.disabled ? "opacity-50 cursor-not-allowed" : ""
     } border border-accent text-accent hover:bg-accent hover:text-text`,

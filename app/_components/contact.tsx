@@ -69,7 +69,7 @@ export default function Contact() {
           />
         </div>
         <Button
-          variant="primary"
+          variant="outline"
           size="md"
           onClick={() => form.handleSubmit(onSubmit)}
           className="self-end mt-2 w-fit"
