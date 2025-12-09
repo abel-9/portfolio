@@ -114,7 +114,7 @@ export default function Experience() {
                   {exp.techStack.map((tech, techIdx) => (
                     <div
                       key={techIdx}
-                      className="flex flex-col items-center justify-center rounded-full aspect-square bg-bg p-2 shadow-shadow-sm"
+                      className="flex flex-col items-center justify-center rounded-full aspect-square bg-bg-light p-2 shadow-shadow-sm"
                     >
                       <tech.icon
                         className="text-xl"

@@ -32,13 +32,6 @@ const projects: ProjectProps[] = [
     images: ["/project_placeholder.png"],
   },
   {
-    name: "Portfolio Website",
-    description:
-      "A personal portfolio website to showcase my projects and skills.",
-    technologies: ["NextJS", "TypeScript", "TailwindCSS", "Framer Motion"],
-    images: ["/portfolio.png"],
-  },
-  {
     name: "story",
     description:
       "A social app that lets users create and share short stories with friends and followers.",
@@ -74,13 +67,23 @@ const projects: ProjectProps[] = [
     technologies: ["Frontend", "vueJS", "JavaScript", "CSS"],
     images: ["/project_placeholder.png"],
   },
+  {
+    name: "Portfolio Website",
+    description:
+      "A personal portfolio website to showcase my projects and skills.",
+    technologies: ["NextJS", "TypeScript", "TailwindCSS", "Framer Motion"],
+    images: ["/portfolio.png"],
+  },
 ];
 
 export default function Projects() {
   const [currentSubjectIndex, setCurrentSubjectIndex] = useState<number>(-1);
 
   return (
-    <section id="projects" className="flex flex-col items-center p-4">
+    <section
+      id="projects"
+      className="flex flex-col items-center p-4 py-16 px-4 md:px-8 lg:px-16"
+    >
       <h2 className="text-3xl font-bold text-center text-primary">Projects</h2>
       <p className="text-md text-center text-text-muted max-w-2xl mt-2">
         Here are some of the projects I&apos;ve worked on recently.

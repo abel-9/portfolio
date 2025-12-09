@@ -24,8 +24,11 @@ export default function Hero() {
     },
   ];
   return (
-    <section className="bg-bg-dark h-screen" id="home">
-      <div className="flex h-full">
+    <section
+      className="bg-bg-dark h-screen flex justify-center items-center"
+      id="home"
+    >
+      <div className="flex md:flex-row flex-col h-full">
         <div className="flex-1 flex flex-col justify-center items-start p-4 md:p-8 lg:p-16">
           {/* <p className="text-xl text-text font-bold">Hi</p> */}
           <div className="flex-1 flex flex-col items-center justify-center">

@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="bg-bg-dark p-4 md:p-8 lg:p-16">
+    <section className="bg-bg-dark p-4 md:p-8 lg:p-16" id="about">
       <div className="flex">
         <div className="flex-1"></div>
         <div className="flex-1">

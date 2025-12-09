@@ -7,6 +7,7 @@
 // import Skill from "./_components/Skill";
 // import Sparetor from "./_components/sparetor";
 
+import Projects from "./_components/projects";
 import ToggleTheme from "./_components/shared/toggleTheme";
 import About from "./_comps/about";
 import Experience from "./_comps/experiance";
@@ -50,6 +51,7 @@ export default function Portfolio() {
       <About />
       <Skills />
       <Experience />
+      <Projects />
       <div className="fixed bottom-2 right-2">
         <ToggleTheme />
       </div>
