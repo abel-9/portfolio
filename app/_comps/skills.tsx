@@ -81,7 +81,7 @@ export default function Skills() {
     <section className="bg-bg-dark py-16 px-4 md:px-8 lg:px-16" id="skills">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold text-primary mb-12 text-center">
-          I've worked with
+          I&apos;ve worked with
         </h1>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {skills.map((skill) => (

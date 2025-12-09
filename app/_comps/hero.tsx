@@ -43,11 +43,11 @@ export default function Hero() {
               Software Developer.
             </h1>
             <p className="mt-4 text-base text-text-muted">
-              I'm passionate about turning ideas into impactful solutions. With
-              a focus on clarity, creativity, and scalability, I build projects
-              that connect people, simplify processes, and inspire growth. My
-              portfolio reflects a commitment to learning, problem‑solving, and
-              creating work that makes a difference.
+              I&apos;m passionate about turning ideas into impactful solutions.
+              With a focus on clarity, creativity, and scalability, I build
+              projects that connect people, simplify processes, and inspire
+              growth. My portfolio reflects a commitment to learning,
+              problem‑solving, and creating work that makes a difference.
             </p>
           </div>
           <div className="w-full">

@@ -4,7 +4,14 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, User, Code, FolderGit2, Mail } from "lucide-react";
+import {
+  Home,
+  User,
+  Code,
+  FolderGit2,
+  Mail,
+  ProjectorIcon,
+} from "lucide-react";
 
 const tabs = [
   { name: "Home", id: "home", href: "/#home", icon: Home },
@@ -15,6 +22,12 @@ const tabs = [
     id: "experience",
     href: "/#experience",
     icon: FolderGit2,
+  },
+  {
+    name: "Projects",
+    id: "projects",
+    href: "/#projects",
+    icon: ProjectorIcon,
   },
   { name: "Contact Me", id: "contact", href: "/#contact", icon: Mail },
 ];

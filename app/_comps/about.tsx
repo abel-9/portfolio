@@ -6,7 +6,7 @@ export default function About() {
         <div className="flex-1">
           <h1 className="text-3xl font-bold text-primary mb-2">About Me</h1>
           <p className="text-text-muted">
-            My name is Abel, and I'm a software developer passionate about
+            My name is Abel, and I&apos;m a software developer passionate about
             building scalable, feature-rich solutions that solve real problems.
             With a background in computer science, my projects focus on
             addressing challenges faced by organizations as well as creating
