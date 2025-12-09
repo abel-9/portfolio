@@ -4,7 +4,7 @@ export default function Hero() {
   const socialMedia = [
     {
       name: "LinkedIn",
-      link: "#",
+      link: "https://www.linkedin.com/in/abel-girmay-08b231267/",
       icon: FaLinkedin,
     },
     {
@@ -14,7 +14,7 @@ export default function Hero() {
     },
     {
       name: "Telegram",
-      link: "#",
+      link: "https://t.me/Ab3l9",
       icon: FaTelegram,
     },
     {
@@ -56,34 +56,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="flex-1 flex flex-col justify-center items-center p-4 md:p-8 lg:p-16 relative">
-          {/* <div className="relative group max-w-md">
-            <div className="absolute -inset-1 bg-gradient-to-r from-text to-primary rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-            <div className="relative px-8 py-8 bg-bg-dark ring-1 ring-gray-900/5 rounded-lg leading-none flex flex-col items-start justify-center space-y-4">
-              <h3 className="text-text font-bold text-2xl">
-                Want to see more?
-              </h3>
-              <p className="text-text-muted text-base leading-relaxed">
-                Check out my resume to get a detailed overview of my experience,
-                skills, and education.
-              </p>
-              <a
-                href="/resume.pdf"
-                download="Abel_Resume.pdf"
-                className="w-full"
-              >
-                <Button
-                  variant="primary"
-                  size="lg"
-                  className="!w-full flex items-center justify-center gap-3 mt-2"
-                >
-                  <span>Download Resume</span>
-                  <FaDownload />
-                </Button>
-              </a>
-            </div>
-          </div> */}
-        </div>
+        <div className="flex-1 flex flex-col justify-center items-center p-4 md:p-8 lg:p-16 relative"></div>
       </div>
     </section>
   );

@@ -10,6 +10,7 @@
 import Projects from "./_components/projects";
 import ToggleTheme from "./_components/shared/toggleTheme";
 import About from "./_comps/about";
+import Contact from "./_comps/contact";
 import Experience from "./_comps/experiance";
 import Hero from "./_comps/hero";
 import Navbar from "./_comps/navbar";
@@ -52,6 +53,7 @@ export default function Portfolio() {
       <Skills />
       <Experience />
       <Projects />
+      <Contact />
       <div className="fixed bottom-2 right-2">
         <ToggleTheme />
       </div>

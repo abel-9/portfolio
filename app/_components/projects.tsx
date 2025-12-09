@@ -67,13 +67,13 @@ const projects: ProjectProps[] = [
     technologies: ["Frontend", "vueJS", "JavaScript", "CSS"],
     images: ["/project_placeholder.png"],
   },
-  {
-    name: "Portfolio Website",
-    description:
-      "A personal portfolio website to showcase my projects and skills.",
-    technologies: ["NextJS", "TypeScript", "TailwindCSS", "Framer Motion"],
-    images: ["/portfolio.png"],
-  },
+  // {
+  //   name: "Portfolio Website",
+  //   description:
+  //     "A personal portfolio website to showcase my projects and skills.",
+  //   technologies: ["NextJS", "TypeScript", "TailwindCSS", "Framer Motion"],
+  //   images: ["/portfolio.png"],
+  // },
 ];
 
 export default function Projects() {
