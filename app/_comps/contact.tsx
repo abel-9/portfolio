@@ -1,4 +1,4 @@
-import { BsEnvelope, BsGithub, BsLinkedin, BsTelegram } from "react-icons/bs";
+import { BsEnvelope, BsLinkedin, BsTelegram } from "react-icons/bs";
 import { CiCoffeeCup } from "react-icons/ci";
 import {
   LiaHandPointDownSolid,
