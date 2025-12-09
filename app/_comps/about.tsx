@@ -2,10 +2,12 @@ export default function About() {
   return (
     <section className="bg-bg-dark p-4 md:p-8 lg:p-16" id="about">
       <div className="flex">
-        <div className="flex-1"></div>
+        <div className="md:flex-1 hidden md:block"></div>
         <div className="flex-1">
-          <h1 className="text-3xl font-bold text-primary mb-2">About Me</h1>
-          <p className="text-text-muted">
+          <h1 className="text-3xl font-bold text-primary mb-2 md:text-start text-center">
+            About Me
+          </h1>
+          <p className="text-text-muted md:text-start text-center">
             My name is Abel, and I&apos;m a software developer passionate about
             building scalable, feature-rich solutions that solve real problems.
             With a background in computer science, my projects focus on

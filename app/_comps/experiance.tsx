@@ -83,7 +83,7 @@ export default function Experience() {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className={`border-primary border-l-2 pl-4 w-1/2 ${
+            className={`border-primary border-l-2 pl-4 md:w-1/2 w-full ${
               (index + 1) % 2 === 0 ? "self-end" : ""
             }`}
           >
