@@ -1,12 +1,4 @@
-import {
-  FaEnvelope,
-  FaLinkedin,
-  FaMailchimp,
-  FaPhone,
-  FaTelegram,
-  FaDownload,
-} from "react-icons/fa6";
-import Button from "../_components/shared/button";
+import { FaEnvelope, FaLinkedin, FaPhone, FaTelegram } from "react-icons/fa6";
 
 export default function Hero() {
   const socialMedia = [
@@ -38,7 +30,7 @@ export default function Hero() {
           {/* <p className="text-xl text-text font-bold">Hi</p> */}
           <div className="flex-1 flex flex-col items-center justify-center">
             <h1 className="mt-4 text-3xl md:text-5xl font-bold text-text">
-              I'm{" "}
+              I&apos;m{" "}
               <span className="text-primary text-4xl md:text-6xl">Abel</span>, a
               Software Developer.
             </h1>
@@ -47,7 +39,7 @@ export default function Hero() {
               With a focus on clarity, creativity, and scalability, I build
               projects that connect people, simplify processes, and inspire
               growth. My portfolio reflects a commitment to learning,
-              problem‑solving, and creating work that makes a difference.
+              problem-solving, and creating work that makes a difference.
             </p>
           </div>
           <div className="w-full">
