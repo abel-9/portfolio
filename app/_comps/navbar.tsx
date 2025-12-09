@@ -1,9 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   Home,
   User,
@@ -32,28 +30,13 @@ const tabs = [
   { name: "Contact Me", id: "contact", href: "/#contact", icon: Mail },
 ];
 
-export default function Navbar() {
-  const [activeTab, setActiveTab] = useState("home");
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace("#", "");
-      if (hash) {
-        setActiveTab(hash);
-      } else if (pathname === "/") {
-        setActiveTab("home");
-      }
-    };
-
-    // Initial check
-    handleHashChange();
-
-    // Listen for hash changes
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, [pathname]);
-
+export default function Navbar({
+  activeTab,
+  setActiveTab,
+}: {
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+}) {
   return (
     <nav className="p-4 h-24 bg-transparent">
       <div className="rounded-full m-auto md:w-3/5 lg:w-1/2 w-full  h-full bg-bg shadow-sm">

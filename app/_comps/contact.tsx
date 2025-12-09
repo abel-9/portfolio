@@ -23,7 +23,10 @@ export default function Contact() {
         opportunities to be part of your visions. Feel free to reach out to me
         through any of the platforms listed below.
       </p>
-      <div className="flex items-center gap-2 pt-8">
+      <span className="mt-8 mb-2">
+        <LiaHandPointDownSolid className="text-2xl text-text" />
+      </span>
+      <div className="flex items-center gap-2">
         <span>
           <LiaHandPointRightSolid className="text-2xl text-text" />
         </span>

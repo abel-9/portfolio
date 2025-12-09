@@ -6,7 +6,7 @@
 // import ToggleTheme from "./_components/shared/toggleTheme";
 // import Skill from "./_components/Skill";
 // import Sparetor from "./_components/sparetor";
-
+"use client";
 import Projects from "./_components/projects";
 import ToggleTheme from "./_components/shared/toggleTheme";
 import About from "./_comps/about";
@@ -15,6 +15,8 @@ import Experience from "./_comps/experiance";
 import Hero from "./_comps/hero";
 import Navbar from "./_comps/navbar";
 import Skills from "./_comps/skills";
+import useActiveTab from "./hooks/useActiveTab";
+import { useEffect } from "react";
 
 // export default function Home() {
 //   return (
@@ -43,10 +45,43 @@ import Skills from "./_comps/skills";
 // }
 
 export default function Portfolio() {
+  const { activeTab, setActiveTab } = useActiveTab();
+
+  useEffect(() => {
+    const sections = [
+      "home",
+      "about",
+      "skills",
+      "experience",
+      "projects",
+      "contact",
+    ];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-40% 0px -40% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveTab(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [setActiveTab]);
+
   return (
     <div className="flex flex-col bg-bg-dark">
       <div className="fixed top-0 w-full z-10">
-        <Navbar />
+        <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
       <Hero />
       <About />
