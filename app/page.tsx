@@ -10,6 +10,8 @@ import Skills from "./_comps/skills";
 import useActiveTab from "./hooks/useActiveTab";
 import { useEffect } from "react";
 
+// Main Portfolio Page Component
+
 export default function Portfolio() {
   const { activeTab, setActiveTab } = useActiveTab();
 
