@@ -6,7 +6,14 @@ import {
   RiTailwindCssFill,
   RiVuejsLine,
 } from "react-icons/ri";
-import { SiExpress, SiNestjs, SiPrisma, SiRedux } from "react-icons/si";
+import {
+  SiExpress,
+  SiFastapi,
+  SiNestjs,
+  SiPrisma,
+  SiRedux,
+  SiSqlalchemy,
+} from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 
 export default function Skills() {
@@ -27,8 +34,18 @@ export default function Skills() {
       color: "#E0234E",
     },
     {
+      name: "FastAPI",
+      icon: SiFastapi,
+      color: "#000000",
+    },
+    {
       name: "PostgreSQL",
       icon: DiPostgresql,
+      color: "#336791",
+    },
+    {
+      name: "SQLAlchemy",
+      icon: SiSqlalchemy,
       color: "#336791",
     },
     {
